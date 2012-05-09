@@ -1,0 +1,43 @@
+<h1 id="story_title"><%= @story.title %></h1>
+
+<div id="story">
+	<% if @lines.empty? %>
+		<p class="sorry">Sorry, there aren't any lines to this story yet. Care to add one?</p>
+	<% end %>
+	<ul class="lines">	
+		<% @lines.each do |line| %>
+			<li><%= line.content %></li>
+		<% end %>
+	</ul>
+	
+	<div id="form">
+		<%= form_tag(story_url) do %>
+		  <%= text_field_tag :content %>
+		  <%= submit_tag %>
+		<% end %>
+	</div>
+	<!-- Flash Notices GO HEREEEE -->
+	
+	<!-- If submissions of this story exists, show votes left: -->
+	
+	<ul class="submissions">
+		<% @submissions.each do |submission| %>
+			<li>
+				<%= submission.content %>
+				<span>
+				<%= form_tag "/stories/#{params[:id]}/submission", :method => "put", :id => "vote" do %>
+					<%= hidden_field_tag "vote_count", 1 %>
+					<%= hidden_field_tag "submission_id", submission.id %>
+
+					<%= submit_tag "Vote" %>
+				<% end %>
+				<%= submission.vote %>
+				</span>				
+			</li>
+		<% end %>
+		<%= @vote_total %>
+	</ul>
+	
+</div><!-- #story -->
+<div class="bottom_pad"></div>
+<%= link_to "Back to all stories", stories_url %>

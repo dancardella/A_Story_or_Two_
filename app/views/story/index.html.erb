@@ -1,0 +1,9 @@
+<h1>All of our stories</h1>
+<ul>
+	<% @stories.each do |story| %>
+		<li><%= link_to story.title, story %></li>
+	<% end %>
+</ul>
+
+
+<%= link_to "Start a New Story", new_story_url %>
