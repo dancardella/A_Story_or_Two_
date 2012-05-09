@@ -26,12 +26,12 @@ class StoryController < ApplicationController
     
     # Starting to repeat a bit, maybe this can be done a better way.
     # Either way, this is to display vote-countdown on show pages.
-    @vote_total = 0
+    @vote_total = 9
     @submissions_votes = Submission.find_all_by_story_id(params[:id])
     @submissions_votes.each do |submission|
-      @vote_total += submission.vote
+      @vote_total -= submission.vote
     end
-    # @vote_total = @vote_total + 1
+    @vote_total = @vote_total + 1
     
   end
   

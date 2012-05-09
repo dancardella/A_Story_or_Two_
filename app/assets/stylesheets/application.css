@@ -74,6 +74,13 @@ h1.header {
 #form input:hover {
 	background: #3E5916;
 }
+#form input#content {
+	background: #fff;
+	width: 400px;
+	color: #222;
+	text-shadow: none;
+	border: 1px solid #ccc;
+}
 .bottom_pad {
 	background: url(img/bottom_pad.png) no-repeat;
 	width: 600px;

@@ -19,7 +19,11 @@
 	<!-- Flash Notices GO HEREEEE -->
 	
 	<!-- If submissions of this story exists, show votes left: -->
-	
+	<% if @submissions.empty? %>
+		<p class="votes">Add a submission to the story.</p>
+	<% else %>
+		<p class="votes">Votes Left: <span><%= @vote_total %></span>
+	<% end %>
 	<ul class="submissions">
 		<% @submissions.each do |submission| %>
 			<li>
@@ -35,7 +39,7 @@
 				</span>				
 			</li>
 		<% end %>
-		<%= @vote_total %>
+		
 	</ul>
 	
 </div><!-- #story -->
