@@ -1,3 +1,10 @@
+# TO DO:
+# Place in flash notices
+
+# Refactor Controller into models/views/helpers
+# Build collection of story lines to insert into the first line of newly created stories. 
+
+
 class StoryController < ApplicationController
   
   def index
@@ -15,7 +22,6 @@ class StoryController < ApplicationController
     @submission.vote = 0
     @submission.save
     redirect_to story_url
-   
   end
   
   def show
@@ -43,8 +49,6 @@ class StoryController < ApplicationController
         @vote_total += submission.vote
       end
 
-
-
     if @vote_total == 9
       @newlines = Submission.by_vote.find_all_by_story_id(params[:id])
       @newline = @newlines.first
@@ -52,11 +56,10 @@ class StoryController < ApplicationController
       line.content = @newline.content
       line.story_id = params[:id]
       line.save
-      # @submissions = Submission.find_all_by_story_id(params[:id])
       Submission.scoped({:conditions => ['story_id = ?', params[:id] ]}).destroy_all
-      # @submissions.each do |submission|
-      #        submission.destroy
-      #      end
+      redirect_to story_url
+    elsif Submission.find_all_by_story_id(params[:id]).empty?
+      #FLASH NOTICE
       redirect_to story_url
     else
       @submission = Submission.find_by_id(params[:submission_id])
