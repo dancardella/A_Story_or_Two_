@@ -10,22 +10,33 @@
 		<% end %>
 	</ul>
 	
+	<% if @lines.count >= 10 %>
+		<p class="complete">This story is complete! Share it with a friend</p>
+		<% Submission.scoped({:conditions => ['story_id = ?', params[:id] ]}).destroy_all %>
+		<% else %>
+	
 	<div id="form">
-		
 		<%= form_for @new_submission do |f| %>
 		<%= f.text_field :content %>
 		<%= f.submit "Create Line" %>
 		<% end %>
-		
-
 	</div>
-	<!-- Flash Notices GO HEREEEE -->
+	<% end %>
 	
-	<!-- If submissions of this story exists, show votes left: -->
-	<% if @submissions.empty? %>
+	
+	<% if flash[:save_notice].present? %>
+	  <p class="save"><%= flash[:save_notice] %></p>
+	<% end %>
+
+	<% if flash[:alert].present? %>
+	  <p class="error"><%= flash[:alert] %></p>
+	<% end %>
+
+	<% if @submissions.empty? && @lines.count < 9 %>
 		<p class="votes">Add a submission to the story.</p>
-	<% else %>
+	<% elsif @lines.count < 9 %>	
 		<p class="votes">Votes Left: <span><%= @vote_total %></span>
+	<% else %>		
 	<% end %>
 	<ul class="submissions">
 		<% @submissions.each do |submission| %>
@@ -39,12 +50,11 @@
 					<%= submit_tag "Vote" %>
 				<% end %>
 				<%= submission.vote %>
-				</span>				
+				</span>	
 			</li>
 		<% end %>
 		
 	</ul>
-	
+	<%= link_to "Back to all stories", stories_url %>
 </div><!-- #story -->
 <div class="bottom_pad"></div>
-<%= link_to "Back to all stories", stories_url %>

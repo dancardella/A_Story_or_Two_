@@ -9,6 +9,9 @@ ul, li, p {
 li {
 	list-style-type: none;
 }
+a {
+	color: #3E5916;
+}
 h1.header {
 	text-indent: -9999px;
 	background: url(img/logo.png) no-repeat 170px 0;
@@ -139,7 +142,8 @@ h1.header {
 }
 .save,
 .error,
-.sorry {
+.sorry,
+.complete {
 	font-size: 25px;
 	text-align: center;
 }
@@ -147,6 +151,7 @@ h1.header {
 .sorry {
 	color: red;
 }
-.save {
+.save,
+.complete {
 	color: #93A605;
 }
