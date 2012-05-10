@@ -9,6 +9,7 @@ class StoryController < ApplicationController
   
   def index
     @stories = Story.all
+    @story = Story.find_by_id(params[:id])
   end
   
   def new

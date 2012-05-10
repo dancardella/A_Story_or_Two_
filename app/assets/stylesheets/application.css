@@ -1,6 +1,8 @@
 body {
 	background: url(img/wood_bg.png) repeat;
 	font-family: Rancho;
+	font-size: 18px;
+	
 }
 ul, li, p {
 	margin: 0;
@@ -11,6 +13,9 @@ li {
 }
 a {
 	color: #3E5916;
+}
+a:hover {
+	color: #93A605;
 }
 h1.header {
 	text-indent: -9999px;
@@ -143,15 +148,19 @@ h1.header {
 .save,
 .error,
 .sorry,
-.complete {
+.complete,
+.add {
 	font-size: 25px;
 	text-align: center;
 }
-.error,
-.sorry {
-	color: red;
+.sorry,
+.add {
+	color: #F25C05;
 }
 .save,
 .complete {
 	color: #93A605;
+}
+.error {
+	color: red;
 }
