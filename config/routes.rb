@@ -2,7 +2,7 @@ StoryModels::Application.routes.draw do
   
   get "stories", controller: "story", action: "index", as: :stories
   post "stories/:id", controller: "story", action: "create"
-  post "stories/:id/submission", controller: "story", action: "create", as: :stories_submission
+  post "stories/:id/submission", controller: "story", action: "create", as: :submissions
   
 
   get "stories/new", controller: "story", action: "new", as: :new_story

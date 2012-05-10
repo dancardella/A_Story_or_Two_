@@ -11,10 +11,13 @@
 	</ul>
 	
 	<div id="form">
-		<%= form_tag(story_url) do %>
-		  <%= text_field_tag :content %>
-		  <%= submit_tag %>
+		
+		<%= form_for @new_submission do |f| %>
+		<%= f.text_field :content %>
+		<%= f.submit "Create Line" %>
 		<% end %>
+		
+
 	</div>
 	<!-- Flash Notices GO HEREEEE -->
 	
