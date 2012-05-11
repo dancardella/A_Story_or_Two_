@@ -17,7 +17,7 @@
 	
 	<div id="form">
 		<%= form_for @new_submission do |f| %>
-		<%= f.text_field :content , :value => "Submit a new line!" %>
+		<%= f.text_field :content %>
 		<%= f.submit "Create Line" %>
 		<% end %>
 	</div>
@@ -34,7 +34,7 @@
 
 	<% if @submissions.empty? && @lines.count < 9 %>
 
-	<% elsif @lines.count < 9 %>	
+	<% elsif @lines.count < 10 %>	
 		<p class="votes">Votes Left: <span><%= @vote_total %></span>
 	<% else %>		
 	<% end %>
