@@ -4,6 +4,12 @@ body {
 	font-size: 18px;
 	
 }
+#wrap {
+	width: 600px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding-top: 20px;
+}
 ul, li, p {
 	margin: 0;
 	padding: 0;
@@ -19,13 +25,14 @@ a:hover {
 }
 h1.header {
 	text-indent: -9999px;
-	background: url(img/logo.png) no-repeat 170px 0;
+	background: url(img/logo.png) no-repeat 0px 0;
 	height: 60px;
-	width: 600px;
+	width: 250px;
+	float:left;
 	margin: 0 auto;
 }
 #story_title {
-	background: url(img/top_pad.png) no-repeat top;
+	background: url(img/brown_header.png) no-repeat top;
 	width: 600px;
 	height: 65px;
 	margin: 0px auto 0;
@@ -163,4 +170,20 @@ h1.header {
 }
 .error {
 	color: red;
+}
+.user_links {
+	width: 600px;
+	margin: 0 auto 50px;
+	text-align: right;
+}
+.user_links a {
+	color: rgba(0,0,0,.4);
+	font-size: 24px;
+	text-shadow: 1px 1px 0 rgba(255,255,255,.2);
+	text-decoration: none;
+	margin-right: 20px;
+
+}
+.user_links a:hover {
+	color: rgba(0,0,0,.6);
 }
