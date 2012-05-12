@@ -46,7 +46,8 @@
 				<%= form_tag "/stories/#{params[:id]}/submission", :method => "put", :id => "vote" do %>
 					<%= hidden_field_tag "vote_count", 1 %>
 					<%= hidden_field_tag "submission_id", submission.id %>
-
+          	<%= hidden_field_tag "user_id", :user_id %>
+          	
 					<%= submit_tag "Vote" %>
 				<% end %>
 				<%= submission.vote %>

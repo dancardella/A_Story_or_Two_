@@ -1,7 +1,7 @@
 StoryModels::Application.routes.draw do
   
   resources :users
-
+  
   get "users/new"
   resources :sessions, only: [:new, :create, :destroy]
 

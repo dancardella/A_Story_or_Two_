@@ -38,5 +38,6 @@ class UsersController < ApplicationController
   redirect_to stories_url
   end
 
+   
 
 end
