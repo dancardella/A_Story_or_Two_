@@ -1,10 +1,11 @@
 <h1 id="story_title">All of our Stories</h1>
 <div id="story">
+	<%= link_to "Sign Up", signup_path %>
 <ul>
 	<% @stories.each do |story| %>
 		<li><%= link_to story.title, story %></li>
 	<% end %>
 </ul>
-<!-- <% link_to "Start a New Story", new_story_url %> -->
+
 </div>
 <div class="bottom_pad"></div>

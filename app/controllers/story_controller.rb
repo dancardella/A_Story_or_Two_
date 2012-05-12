@@ -1,5 +1,4 @@
 # TO DO:
-# Place in flash notices
 
 # Refactor Controller into models/views/helpers
 # Build collection of story lines to insert into the first line of newly created stories. 

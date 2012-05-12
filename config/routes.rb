@@ -1,5 +1,8 @@
 StoryModels::Application.routes.draw do
   
+  get "users/new"
+  match '/signup', to: 'users#new'
+
   get "stories", controller: "story", action: "index", as: :stories
   post "stories/:id", controller: "story", action: "create"
   post "stories/:id/submission", controller: "story", action: "create", as: :submissions
