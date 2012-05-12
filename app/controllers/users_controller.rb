@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   @user.save
   flash[:notice] = "User Updated Successfully!"
   redirect_to stories_url
-end
+  end
 
   def index
   @users=User.all

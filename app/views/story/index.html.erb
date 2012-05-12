@@ -1,5 +1,9 @@
 <h1 id="story_title">All of our Stories</h1>
 <div id="story">
+	<% if flash[:notice].present? %>
+	  <p class="save"><%= flash[:notice] %></p>
+	<% end %>
+	
 	<%= link_to "Sign Up", signup_path %>
 <ul>
 	<% @stories.each do |story| %>
