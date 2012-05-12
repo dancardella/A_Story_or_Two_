@@ -44,6 +44,8 @@ class StoriesController < ApplicationController
     @submissions_votes.each do |submission|
       @vote_total -= submission.vote
     end
+    @last_story_object = Story.last
+    @last_story_id = @last_story_object.id
   end
   
   def update

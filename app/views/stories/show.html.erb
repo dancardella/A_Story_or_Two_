@@ -12,6 +12,7 @@
 	
 	<% if @lines.count >= 10 %>
 		<p class="complete">This story is complete! Share it with a friend</p>
+		<p class="complete"><a href="/stories/<%= @last_story_id %>">Check out the latest story here</a>
 		<% Submission.scoped({:conditions => ['story_id = ?', params[:id] ]}).destroy_all %>
 		<% else %>
 	

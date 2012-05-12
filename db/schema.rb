@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120512021415) do
+ActiveRecord::Schema.define(:version => 20120512195114) do
 
   create_table "lines", :force => true do |t|
     t.text     "content"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(:version => 20120512021415) do
     t.text     "content"
     t.integer  "story_id"
     t.string   "author"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "new_stories", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
