@@ -9,6 +9,15 @@
 </head>
 <body>
 	<div id="wrap">
+		<h1 class="header">A Story or Two</h1>
+		<div class="user_links">
+			<% if signed_in? %>
+			  <%= link_to "Sign out", signout_path, method: "delete" %>
+			<% else %>
+				<%= link_to "Sign Up", signup_path %>
+				<%= link_to "Sign In", signin_path %>
+			<% end %>
+		</div><!-- .user_links -->
 
 <%= yield %>
 	</div>

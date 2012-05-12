@@ -2,6 +2,7 @@ body {
 	background: url(img/wood_bg.png) repeat;
 	font-family: Rancho;
 	font-size: 18px;
+	color: #574534;
 	
 }
 #wrap {
@@ -18,10 +19,12 @@ li {
 	list-style-type: none;
 }
 a {
-	color: #3E5916;
+	color: #d96216;
+	text-decoration: none;
+	text-shadow: 1px 1px 0 rgba(0,0,0,.1);
 }
 a:hover {
-	color: #93A605;
+	color: #610207;
 }
 h1.header {
 	text-indent: -9999px;
@@ -38,7 +41,8 @@ h1.header {
 	margin: 0px auto 0;
 	text-align: center;
 	font-size: 30px;
-	color: #E5EFFA;
+	color: #f4f4f6;
+	text-shadow: 1px 1px 0 #222;
 	padding-top: 5px;
 }
 #story {
@@ -50,7 +54,7 @@ h1.header {
 #story li {
 	margin-bottom: 15px;
 	font-size: 25px;
-	color: #333;
+	color: #574534;
 	overflow: hidden;
 }
 #form {
