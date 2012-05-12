@@ -5,12 +5,14 @@ class UsersController < ApplicationController
   end
 
   def create
-  @user = User.new
-  @user.name = params[:user][:name]
-  @user.email = params[:user][:email]
-  @user.save
-  flash[:notice] = "User Created Successfully!"
-  redirect_to stories_url
+    @user = User.new(params[:user])
+    if @user.save
+      sign_in @user
+      flash[:notice] = "Welcome to the Sample App!"
+      redirect_to stories_url
+    else
+      render 'new'
+    end
   end
   
   def edit
