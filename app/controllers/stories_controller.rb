@@ -4,7 +4,7 @@
 # Build collection of story lines to insert into the first line of newly created stories. 
 
 
-class StoryController < ApplicationController
+class StoriesController < ApplicationController
   
   def index
     @stories = Story.all
@@ -39,15 +39,11 @@ class StoryController < ApplicationController
     
     # Starting to repeat a bit, maybe this can be done a better way.
     
-    @vote_total = 9
+    @vote_total = 10
     @submissions_votes = Submission.find_all_by_story_id(params[:id])
     @submissions_votes.each do |submission|
       @vote_total -= submission.vote
     end
-    @vote_total = @vote_total + 1
-    
-    
-    
   end
   
   def update
@@ -57,7 +53,17 @@ class StoryController < ApplicationController
         @vote_total += submission.vote
       end
 
-    if @vote_total == 9
+    if @vote_total == 9 && Line.find_all_by_story_id(params[:id]).count == 9
+      @newlines = Submission.by_vote.find_all_by_story_id(params[:id])
+      @newline = @newlines.first
+      line = Line.new
+      line.content = @newline.content
+      line.story_id = params[:id]
+      line.save
+      Submission.scoped({:conditions => ['story_id = ?', params[:id] ]}).destroy_all
+      create_story
+      redirect_to story_url
+    elsif @vote_total == 9
       @newlines = Submission.by_vote.find_all_by_story_id(params[:id])
       @newline = @newlines.first
       line = Line.new
@@ -66,7 +72,7 @@ class StoryController < ApplicationController
       line.save
       Submission.scoped({:conditions => ['story_id = ?', params[:id] ]}).destroy_all
       redirect_to story_url
-    elsif Submission.find_all_by_story_id(params[:id]).empty?
+    elsif Submission.find_all_by_story_id(params[:id]).empty? || Submission.find_by_id(params[:submission_id]).nil?
       #FLASH NOTICE
       redirect_to story_url
     else

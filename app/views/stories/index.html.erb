@@ -1,0 +1,20 @@
+<h1 id="story_title">All of our Stories</h1>
+<div id="story">
+	<% if flash[:notice].present? %>
+	  <p class="save"><%= flash[:notice] %></p>
+	<% end %>
+	<% if signed_in? %>
+	  <%= link_to "Sign out", signout_path, method: "delete" %>
+	<% else %>
+		<%= link_to "Sign Up", signup_path %>
+		<%= link_to "Sign In", signin_path %>
+	<% end %>
+
+	<ul>
+		<% @stories.each do |story| %>
+		<li><%= link_to story.title, story %></li>
+		<% end %>
+	</ul>
+
+</div>
+<div class="bottom_pad"></div>
