@@ -191,3 +191,6 @@ h1.header {
 .user_links a:hover {
 	color: rgba(0,0,0,.6);
 }
+form.new_user input {
+	display: block;
+}
