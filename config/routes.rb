@@ -1,7 +1,12 @@
 StoryModels::Application.routes.draw do
   
   resources :users
+<<<<<<< HEAD
   
+=======
+  root :to => "stories#index"
+
+>>>>>>> 4551dacea72d8fa835f574557527629399108127
   get "users/new"
   resources :sessions, only: [:new, :create, :destroy]
 
@@ -9,12 +14,12 @@ StoryModels::Application.routes.draw do
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
-  get "stories", controller: "story", action: "index", as: :stories
-  post "stories/:id", controller: "story", action: "create"
-  post "stories/:id/submission", controller: "story", action: "create", as: :submissions
+  get "stories", controller: "stories", action: "index", as: :stories
+  post "stories/:id", controller: "stories", action: "create"
+  post "stories/:id/submission", controller: "stories", action: "create", as: :submissions
   
 
-  get "stories/new", controller: "story", action: "new", as: :new_story
-  get "stories/:id", controller: "story", action: "show", as: :story
-  put "/stories/:id/submission", controller: "story", action: "update"
+  get "stories/new", controller: "stories", action: "new", as: :new_story
+  get "stories/:id", controller: "stories", action: "show", as: :story
+  put "/stories/:id/submission", controller: "stories", action: "update"
 end

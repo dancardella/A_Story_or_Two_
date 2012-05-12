@@ -1,3 +1,12 @@
+<div class="logo"></div>
+<div class="user_links">
+	<% if signed_in? %>
+	  <%= link_to "Sign out", signout_path, method: "delete" %>
+	<% else %>
+		<%= link_to "Sign Up", signup_path %>
+		<%= link_to "Sign In", signin_path %>
+	<% end %>
+</div><!-- .user_links -->
 <h1 id="story_title"><%= @story.title %></h1>
 
 <div id="story">
@@ -12,6 +21,7 @@
 	
 	<% if @lines.count >= 10 %>
 		<p class="complete">This story is complete! Share it with a friend</p>
+		<p class="complete"><a href="/stories/<%= @last_story_id %>">Check out the latest story here</a>
 		<% Submission.scoped({:conditions => ['story_id = ?', params[:id] ]}).destroy_all %>
 		<% else %>
 	

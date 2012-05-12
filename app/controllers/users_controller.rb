@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def new
-  @user=User.new
+  @user = User.new
   end
 
   def create
@@ -16,15 +16,15 @@ class UsersController < ApplicationController
   end
   
   def edit
-  @user=User.find_by_id(params[:id])
+    @user = User.find_by_id(params[:id])
   end
   
   def update
-  @user=User.find_by_id(params[:id])
-  @user.update_attributes(params[:user])
-  @user.save
-  flash[:notice] = "User Updated Successfully!"
-  redirect_to stories_url
+    @user = User.find_by_id(params[:id])
+    @user.update_attributes(params[:user])
+    @user.save
+    flash[:notice] = "User Updated Successfully!"
+    redirect_to stories_url
   end
 
   def index
@@ -32,10 +32,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-  u=User.find_by_id(params[:id])
-  u.destroy
-  flash[:notice] = "User created Successfully!"
-  redirect_to stories_url
+    u = User.find_by_id(params[:id])
+    u.destroy
+    flash[:notice] = "User created Successfully!"
+    redirect_to stories_url
   end
 
    
