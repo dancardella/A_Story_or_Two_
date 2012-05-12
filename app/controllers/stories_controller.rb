@@ -42,13 +42,12 @@ class StoriesController < ApplicationController
     @submissions_votes = Submission.find_all_by_story_id(params[:id])
     @submissions_votes.each do |submission|
     @vote_total -= submission.vote 
-   @user=User.find_by_id(params[:user_id])
+    @user=User.find_by_id(params[:user_id])
     end
-# <<<<<<< HEAD:app/controllers/story_controller.rb
-=======
+
     @last_story_object = Story.last
     @last_story_id = @last_story_object.id
-# >>>>>>> 4551dacea72d8fa835f574557527629399108127:app/controllers/stories_controller.rb
+
   end
   
   def update
@@ -64,8 +63,7 @@ class StoriesController < ApplicationController
         @vote_total += submission.vote
         end
 
-# <<<<<<< HEAD:app/controllers/story_controller.rb
-    if @vote_total == 9 #elsif
+
     if @vote_total == 9 && Line.find_all_by_story_id(params[:id]).count == 9
       @newlines = Submission.by_vote.find_all_by_story_id(params[:id])
       @newline = @newlines.first
@@ -77,7 +75,7 @@ class StoriesController < ApplicationController
       create_story
       redirect_to story_url
     elsif @vote_total == 9
-# >>>>>>> 4551dacea72d8fa835f574557527629399108127:app/controllers/stories_controller.rb
+
       @newlines = Submission.by_vote.find_all_by_story_id(params[:id])
       @newline = @newlines.first
       line = Line.new
