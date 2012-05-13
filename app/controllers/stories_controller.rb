@@ -48,7 +48,7 @@ class StoriesController < ApplicationController
     @last_story_id = @last_story_object.id
   end
   
-  def update
+  def update    
     @vote_total = 0
     @submissions = Submission.find_all_by_story_id(params[:id])
       @submissions.each do |submission|
