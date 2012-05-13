@@ -38,5 +38,8 @@ class UsersController < ApplicationController
     redirect_to stories_url
   end
 
+  def show 
+    @user = User.find_by_id(params[:id])
+  end
 
 end

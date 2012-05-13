@@ -1,6 +1,7 @@
 StoryModels::Application.routes.draw do
   
   resources :users
+
   root :to => "stories#index"
 
   get "users/new"
