@@ -85,7 +85,7 @@ class StoriesController < ApplicationController
       @submission = Submission.find_by_id(params[:submission_id])
       @submission.vote += params[:vote_count].to_i
       @submission.save
-      redirect_to stories_url
+      redirect_to story_url
     end
   end
 end
