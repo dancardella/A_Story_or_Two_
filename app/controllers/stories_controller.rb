@@ -47,8 +47,8 @@ class StoriesController < ApplicationController
         flash[:notice] = "Only 1 Vote per Hour Please" 
         redirect_to stories_url and return stories_url
       else
-        @submission = Submission.find_by_id(params[:id])
-        session[:vote_time] = @submission.Time.now
+        #@submission = Submission.find_by_id(params[:id])
+        session[:vote_time] = Time.now
         @vote_total = 0
         @submissions = Submission.find_all_by_story_id(params[:id])
         @submissions.each do |submission|
