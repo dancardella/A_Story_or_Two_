@@ -1,9 +1,3 @@
-# TO DO:
-# Call me Ishmael
-# Refactor Controller into models/views/helpers
-# Build collection of story lines to insert into the first line of newly created stories. 
-
-
 class StoriesController < ApplicationController
   
   def index
@@ -12,7 +6,6 @@ class StoriesController < ApplicationController
   end
   
   def new
-    
   end
   
   def create
@@ -36,8 +29,6 @@ class StoriesController < ApplicationController
     @submissions = Submission.by_vote.find_all_by_story_id(params[:id])
     @new_submission = Submission.new
     
-    # Starting to repeat a bit, maybe this can be done a better way.
-    
     @vote_total = 10
     @submissions_votes = Submission.find_all_by_story_id(params[:id])
     @submissions_votes.each do |submission|
@@ -51,19 +42,20 @@ class StoriesController < ApplicationController
   end
   
   def update
-    # @user=User.find_by_id(params[:user_id])
-    #              if @user.timestamp && Time.now - @user.timestamp < 3600
-    #              flash[:notice] = "Only 1 Vote per Hour / Story Please"
-    #              render stories_url  
-    #                elsif
-    #                timestamp(user)
+    
+      if session[:vote_time] && (Time.now - session[:vote_time] < 3600)
+        flash[:notice] = "Only 1 Vote per Hour Please" 
+        redirect_to stories_url and return stories_url
+      else
+        @submission = Submission.find_by_id(params[:id])
+        session[:vote_time] = @submission.Time.now
         @vote_total = 0
         @submissions = Submission.find_all_by_story_id(params[:id])
         @submissions.each do |submission|
-        @vote_total += submission.vote
-        end
-
-
+        @vote_total += submission.vote 
+        end    
+      end
+     
     if @vote_total == 9 && Line.find_all_by_story_id(params[:id]).count == 9
       @newlines = Submission.by_vote.find_all_by_story_id(params[:id])
       @newline = @newlines.first
@@ -71,27 +63,27 @@ class StoriesController < ApplicationController
       line.content = @newline.content
       line.story_id = params[:id]
       line.save
-      Submission.scoped({:conditions => ['story_id = ?', params[:id] ]}).destroy_all
+      Submission.scoped({:conditions => ['story_id = ?', params[:id]]}).destroy_all
       create_story
-      redirect_to story_url
+      redirect_to stories_url
+   
     elsif @vote_total == 9
-
       @newlines = Submission.by_vote.find_all_by_story_id(params[:id])
       @newline = @newlines.first
       line = Line.new
       line.content = @newline.content
       line.story_id = params[:id]
       line.save
-      Submission.scoped({:conditions => ['story_id = ?', params[:id] ]}).destroy_all
+      Submission.scoped({:conditions => ['story_id = ?', params[:id]]}).destroy_all
       redirect_to story_url
     elsif Submission.find_all_by_story_id(params[:id]).empty? || Submission.find_by_id(params[:submission_id]).nil?
       #FLASH NOTICE
-      redirect_to story_url
+      redirect_to stories_url
     else
       @submission = Submission.find_by_id(params[:submission_id])
       @submission.vote += params[:vote_count].to_i
       @submission.save
-      redirect_to story_url
+      redirect_to stories_url
     end
   end
 end
