@@ -45,8 +45,8 @@ class StoriesController < ApplicationController
 
   def update
     
-      if session[:vote_time] && (Time.now - session[:vote_time] < 3600)
-        flash[:notice] = "Only 1 Vote per Hour Please" 
+      if session[:vote_time] && (Time.now - session[:vote_time] < 10)
+        flash[:notice] = "Only 1 Vote per ten seconds...please" 
         redirect_to stories_url and return stories_url
       else
         #@submission = Submission.find_by_id(params[:id])
