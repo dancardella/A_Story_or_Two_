@@ -1,9 +1,12 @@
 StoryModels::Application.routes.draw do
   
   resources :users
+<<<<<<< HEAD
   
+=======
   root :to => "stories#index"
 
+>>>>>>> 4551dacea72d8fa835f574557527629399108127
   get "users/new"
   resources :sessions, only: [:new, :create, :destroy]
 
