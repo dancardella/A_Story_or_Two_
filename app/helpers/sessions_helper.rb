@@ -6,20 +6,20 @@ module SessionsHelper
     
     def signed_in?
         !current_user.nil?
-      end
+    end
     
-      def sign_out
-          current_user = nil
-          cookies.delete(:remember_token)
-        end
+    def sign_out
+        current_user = nil
+        cookies.delete(:remember_token)
+    end
       
     def current_user=(user)
         @current_user = user
-      end
+    end
 
-      def current_user
+    def current_user
         @current_user ||= user_from_remember_token
-      end
+    end
 
       private
 

@@ -9,18 +9,7 @@ class StoriesController < ApplicationController
   end
   
   def create
-    submission = Submission.new
-    submission.content = params[:submission][:content]
-    submission.story_id = params[:id]
-    submission.vote = 0
-    if submission.save
-    flash[:save_notice] = "Thanks for submitting!"
-    redirect_to story_url
-    else
-      flash[:alert] = "Not so fast...try again?"
-      redirect_to story_url
-    end
-    
+    create_submission
   end
   
   def show
