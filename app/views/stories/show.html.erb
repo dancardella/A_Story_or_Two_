@@ -40,7 +40,7 @@
 		<% if @submissions.empty? && @lines.count < 9 %>
 
 		<% elsif @lines.count < 10 %>	
-			<p class="votes">Votes Left: <span><%= @vote_total %></span>
+			<p class="votes">Votes Left: <span><%= votes_left %></span>
 		<% else %>		
 		<% end %>
 		<ul class="submissions">
@@ -52,8 +52,8 @@
 					<%= form_tag "/stories/#{params[:id]}/submission", :method => "put", :id => "vote" do %>
 						<%= hidden_field_tag "vote_count", 1 %>
 						<%= hidden_field_tag "submission_id", submission.id %>
-	          	<%= hidden_field_tag "user_id", :user_id %>
-          	
+						<!-- I don't think the line below is doing anything... -->
+	          			<%= hidden_field_tag "user_id", :user_id %>
 						<%= submit_tag "Vote" %>
 					<% end %>
 					<%= submission.vote %>
