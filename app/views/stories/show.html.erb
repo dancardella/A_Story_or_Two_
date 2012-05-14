@@ -25,6 +25,9 @@
 	</div>
 	<% end %>
 	
+	<% if flash[:notice].present? %>
+	  <p class="error"><%= flash[:notice] %></p>
+	<% end %>
 	
 	<% if flash[:save_notice].present? %>
 	  <p class="save"><%= flash[:save_notice] %></p>
