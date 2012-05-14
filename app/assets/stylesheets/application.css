@@ -34,6 +34,9 @@ h1.header {
 	float:left;
 	margin: 0 auto;
 }
+h1.header:hover {
+	background: url(img/logo_hover.png) no-repeat 0 0;
+}
 #story_title {
 	background: url(img/brown_header.png) no-repeat top;
 	width: 600px;
@@ -45,6 +48,7 @@ h1.header {
 	text-shadow: 1px 1px 0 #222;
 	padding-top: 5px;
 }
+
 #story {
 	width: 560px;
 	margin: 0 auto;
@@ -81,7 +85,7 @@ h1.header {
 	font-size: 16px;
 }
 #form input {
-	background: #93A605;
+	background: #82941e;
 	font: 20px Rancho;
 	border: 1px solid #eaeaea;
 	border-radius: 5px;
@@ -173,7 +177,7 @@ h1.header {
 	color: #93A605;
 }
 .error {
-	color: red;
+	color: #610207;
 }
 .user_links {
 	width: 600px;
