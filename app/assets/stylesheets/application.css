@@ -214,16 +214,18 @@ form.new_user input {
 	border-radius: 10px;
 }
 #sidebar p {
-	font-size: 22px;
+	font-size: 32px;
 }
-#sidebar a {
+#sidebar a,
+.back {
 	color: #574534;
 	color: rgba(0,0,0,.4);
 	font-size: 24px;
 	text-shadow: 1px 1px 0 rgba(255,255,255,.2);
 	text-decoration: none;
 }
-#sidebar a:hover {
+#sidebar a:hover,
+.back:hover {
 	color: rgba(0,0,0,.6);
 }
 #sidebar h2 {
@@ -231,4 +233,15 @@ form.new_user input {
 }
 #content {
 	float: left;
+}
+#story .social_links {
+	overflow: hidden;
+	margin: 10px auto;
+	width: 270px;
+}
+#story .social_links li {
+	float: left;
+}
+#story .twitter {
+	padding-top: 6px;
 }

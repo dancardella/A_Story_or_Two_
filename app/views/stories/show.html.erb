@@ -13,9 +13,14 @@
 	
 		<% if @lines.count >= 10 %>
 			<p class="complete">This story is complete! Share it with a friend</p>
-			<p class="complete"><a href="/stories/<%= @last_story_id %>">Check out the latest story here</a>
+			<ul class="social_links">
+				<li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://astoryortwo.heorkuapp.com/stories/<%= params[:id] %>" data-text="Check out this story from A Story or Two" data-via="astoryortwo_">Tweet</a></li>
+				<li><div class="fb-like" data-href="http://astoryortwo.herokuapp.com/stories/<%= params[:id] %>" data-send="true" data-layout="button_count" data-width="80" data-show-faces="false" data-font="verdana"></div></li>
+			</ul>
+					
+			<p class="complete"><a href="/stories/<%= @last_story_id %>">Check out the latest story here</a></p>
 			<% Submission.scoped({:conditions => ['story_id = ?', params[:id] ]}).destroy_all %>
-			<% else %>
+		<% else %>
 	
 		<div id="form">
 			<%= form_for @new_submission do |f| %>
@@ -43,6 +48,8 @@
 			<p class="votes">Votes Left: <span><%= votes_left %></span>
 		<% else %>		
 		<% end %>
+		
+		<% if !@submissions.empty? %>
 		<ul class="submissions">
 			<% @submissions.each do |submission| %>
 				<li><p>
@@ -62,10 +69,12 @@
 			<% end %>
 		
 		</ul>
-		<%= link_to "Back to all stories", stories_url, :class => "back" %>
+		<% end %>
 	</div><!-- #story -->
 	<div class="bottom_pad"></div>
+	<%= link_to "« Back to all stories", stories_url, :class => "back" %>
 </div><!-- #content -->
+
 <div id="sidebar">
 	<h2>Recent Stories</h2>
 	<ul>
@@ -74,3 +83,4 @@
 		<% end %>
 	</ul>
 </div><!-- #sidebar -->
+				<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
