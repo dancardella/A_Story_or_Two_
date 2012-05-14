@@ -45,8 +45,9 @@
 	<% end %>
 	<ul class="submissions">
 		<% @submissions.each do |submission| %>
-			<li>
+			<li><p>
 				<%= submission.content %>
+				</p>
 				<span>
 				<%= form_tag "/stories/#{params[:id]}/submission", :method => "put", :id => "vote" do %>
 					<%= hidden_field_tag "vote_count", 1 %>

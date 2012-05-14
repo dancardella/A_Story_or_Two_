@@ -118,6 +118,10 @@ h1.header:hover {
 	border-bottom: 1px dotted #eaeaea;
 	padding-bottom: 10px;
 }
+.submissions p {
+	width: 400px;
+	float: left;
+}
 .submissions span {
 	float: right;
 	padding: 10px;
