@@ -6,12 +6,12 @@ body {
 	letter-spacing: 1px;
 }
 #wrap {
-	width: 600px;
+	width: 900px;
 	margin: 0 auto;
 	overflow: hidden;
 	padding-top: 20px;
 }
-ul, li, p {
+ul, li, p, h1, h2 {
 	margin: 0;
 	padding: 0;
 }
@@ -41,7 +41,7 @@ h1.header:hover {
 	background: url(img/brown_header.png) no-repeat top;
 	width: 600px;
 	height: 65px;
-	margin: 0px auto 0;
+	margin: 0px  0;
 	text-align: center;
 	font-size: 30px;
 	color: #f4f4f6;
@@ -51,7 +51,7 @@ h1.header:hover {
 
 #story {
 	width: 560px;
-	margin: 0 auto;
+	margin: 0;
 	background: #fff;
 	padding: 20px;
 }
@@ -107,7 +107,7 @@ h1.header:hover {
 .bottom_pad {
 	background: url(img/bottom_pad.png) no-repeat;
 	width: 600px;
-	margin: 0 auto;
+	margin: 0 0;
 	height: 20px;
 }
 .lines li {
@@ -184,11 +184,11 @@ h1.header:hover {
 	color: #610207;
 }
 .user_links {
-	width: 600px;
 	margin: 0 auto 50px;
 	text-align: right;
 }
 .user_links a {
+	color: #574534;
 	color: rgba(0,0,0,.4);
 	font-size: 24px;
 	text-shadow: 1px 1px 0 rgba(255,255,255,.2);
@@ -201,4 +201,34 @@ h1.header:hover {
 }
 form.new_user input {
 	display: block;
+}
+#sidebar {
+	width: 260px;
+	float: right;
+	color: #574534;
+	color: rgba(0,0,0,.4);
+	text-align: center;
+	text-shadow: 1px 1px 0 rgba(255,255,255,.2);
+	border: 3px double rgba(0,0,0,.2);
+	padding: 10px;
+	border-radius: 10px;
+}
+#sidebar p {
+	font-size: 22px;
+}
+#sidebar a {
+	color: #574534;
+	color: rgba(0,0,0,.4);
+	font-size: 24px;
+	text-shadow: 1px 1px 0 rgba(255,255,255,.2);
+	text-decoration: none;
+}
+#sidebar a:hover {
+	color: rgba(0,0,0,.6);
+}
+#sidebar h2 {
+	font-size: 30px;
+}
+#content {
+	float: left;
 }

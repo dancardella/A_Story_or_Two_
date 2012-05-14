@@ -1,16 +1,20 @@
-
-
-<h1 id="story_title">All of our Stories</h1>
-<div id="story">
-	<% if flash[:notice].present? %>
-	  <p class="save"><%= flash[:notice] %></p>
-	<% end %>
-
-	<ul>
-		<% @stories.each do |story| %>
-		<li><%= link_to story.title, story %></li>
+<div id="content">
+	<h1 id="story_title">All of our Stories</h1>
+	<div id="story">
+		<% if flash[:notice].present? %>
+		  <p class="save"><%= flash[:notice] %></p>
 		<% end %>
-	</ul>
 
-</div>
-<div class="bottom_pad"></div>
+		<ul>
+			<% @stories.each do |story| %>
+			<li><%= link_to story.title, story %></li>
+			<% end %>
+		</ul>
+
+	</div>
+	<div class="bottom_pad"></div>
+</div><!-- #content -->
+<div id="sidebar">
+	<p>A Story Or Two is a collaborative storytelling application. We provide the first line to a story and you get to provide the rest. Invite your friends and start collaborating on a story today.</p>
+
+</div><!-- #sidebar -->
