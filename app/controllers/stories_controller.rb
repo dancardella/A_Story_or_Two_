@@ -38,7 +38,7 @@ class StoriesController < ApplicationController
     vote_total += submission.vote 
     end
     
-    if session[:vote_time] && (Time.now - session[:vote_time] < 0)
+    if session[:vote_time] && (Time.now - session[:vote_time] < 1800)
       flash[:notice] = "Only 1 Vote Per 30-Minutes...Please!" 
       redirect_to story_url and return story_url
     else

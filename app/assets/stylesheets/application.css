@@ -54,6 +54,7 @@ h1.header:hover {
 	margin: 0;
 	background: #fff;
 	padding: 20px;
+	overflow: hidden;
 }
 #story li {
 	margin-bottom: 15px;
@@ -131,6 +132,9 @@ h1.header:hover {
 	box-shadow: 0 0 1px rgba(0,0,0,.5);
 	color: #F25C05;
 }
+#signup_form .submit {
+	margin: 10px 0;
+}
 .votes {
 	float: right;
 	font-size: 25px;
@@ -149,7 +153,8 @@ h1.header:hover {
 	float: right;
 	margin-left: 20px;
 }
-#vote input {
+#vote input,
+input.submit {
 	background: #F28705;
 	border: 1px solid #F25C05;
 	text-shadow: 1px 1px 0 #888;
@@ -159,10 +164,15 @@ h1.header:hover {
 	border-radius: 5px;
 	padding: 0px 15px;
 }
-#vote input:hover {
+#vote input:hover,
+input.submit:hover {
 	background: #F25C05;
 	border: 1px solid #F28705;
 	cursor: pointer;
+}
+#signup_form {
+	width: 250px;
+	float: left;
 }
 .save,
 .error,
@@ -251,4 +261,8 @@ form.new_user input {
 	}
 ::-moz-selection {
 	background: #eabf81; /* Firefox */
+}
+h2.thanks {
+	text-align: center;
+	color: #93A605;
 }
