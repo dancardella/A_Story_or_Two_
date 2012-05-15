@@ -12,7 +12,7 @@
 		</ul>
 	
 		<% if @lines.count >= 10 %>
-			<p class="complete">This story is complete! Share it with a friend</p>
+			<p class="complete">This story is complete!</p><p class="complete"> Share it with a friend</p>
 			<ul class="social_links">
 				<li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://astoryortwo.heorkuapp.com/stories/<%= params[:id] %>" data-text="Check out this story from A Story or Two" data-via="astoryortwo_">Tweet</a></li>
 				<li><div class="fb-like" data-href="http://astoryortwo.herokuapp.com/stories/<%= params[:id] %>" data-send="true" data-layout="button_count" data-width="80" data-show-faces="false" data-font="verdana"></div></li>
@@ -42,7 +42,7 @@
 		  <p class="error"><%= flash[:alert] %></p>
 		<% end %>
 
-		<% if @submissions.empty? && @lines.count < 9 %>
+		<% if @submissions.empty? && @lines.count <= 9 %>
 
 		<% elsif @lines.count < 10 %>	
 			<p class="votes">Votes Left: <span><%= votes_left %></span>

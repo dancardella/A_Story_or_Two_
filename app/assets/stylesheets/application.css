@@ -245,3 +245,10 @@ form.new_user input {
 #story .twitter {
 	padding-top: 6px;
 }
+
+::selection {
+	background: #eabf81; /* Safari */
+	}
+::-moz-selection {
+	background: #eabf81; /* Firefox */
+}
