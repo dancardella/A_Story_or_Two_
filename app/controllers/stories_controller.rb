@@ -20,7 +20,7 @@ class StoriesController < ApplicationController
       flash[:alert] = "Not so fast...try again?"
       redirect_to story_url
     end
-    
+      
   end
   
   def show
