@@ -1,5 +1,6 @@
 <h1 id="story_title">Sign Up</h1>
 <div id="story">
+	<div id="signup_form">
 		<%= form_for(@user) do |f| %>
 		<%= render 'shared/error_messages' %>
 
@@ -15,8 +16,15 @@
 	      <%= f.label :password_confirmation, "Confirmation" %>
 	      <%= f.password_field :password_confirmation %>
 
-	      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+	      <%= f.submit "Create my account", class: "submit" %>
 	    <% end %>
+	</div><!-- #signup_form -->
+	<h2 class="thanks">Thanks for playing and don't forget to share with your friends</h2>
+	<ul class="social_links">
+		<li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://astoryortwo.heorkuapp.com/stories/<%= params[:id] %>" data-text="Check out this story from A Story or Two" data-via="astoryortwo_">Tweet</a></li>
+		<li><div class="fb-like" data-href="http://astoryortwo.herokuapp.com/stories/<%= params[:id] %>" data-send="true" data-layout="button_count" data-width="80" data-show-faces="false" data-font="verdana"></div></li>
+	</ul>
+
 
 </div><!-- #story -->
 <div class="bottom_pad"></div>

@@ -3,15 +3,15 @@ body {
 	font-family: Rancho;
 	font-size: 18px;
 	color: #574534;
-	
+	letter-spacing: 1px;
 }
 #wrap {
-	width: 600px;
+	width: 900px;
 	margin: 0 auto;
 	overflow: hidden;
 	padding-top: 20px;
 }
-ul, li, p {
+ul, li, p, h1, h2 {
 	margin: 0;
 	padding: 0;
 }
@@ -34,22 +34,27 @@ h1.header {
 	float:left;
 	margin: 0 auto;
 }
+h1.header:hover {
+	background: url(img/logo_hover.png) no-repeat 0 0;
+}
 #story_title {
 	background: url(img/brown_header.png) no-repeat top;
 	width: 600px;
 	height: 65px;
-	margin: 0px auto 0;
+	margin: 0px  0;
 	text-align: center;
 	font-size: 30px;
 	color: #f4f4f6;
 	text-shadow: 1px 1px 0 #222;
 	padding-top: 5px;
 }
+
 #story {
 	width: 560px;
-	margin: 0 auto;
+	margin: 0;
 	background: #fff;
 	padding: 20px;
+	overflow: hidden;
 }
 #story li {
 	margin-bottom: 15px;
@@ -81,7 +86,7 @@ h1.header {
 	font-size: 16px;
 }
 #form input {
-	background: #93A605;
+	background: #82941e;
 	font: 20px Rancho;
 	border: 1px solid #eaeaea;
 	border-radius: 5px;
@@ -103,7 +108,7 @@ h1.header {
 .bottom_pad {
 	background: url(img/bottom_pad.png) no-repeat;
 	width: 600px;
-	margin: 0 auto;
+	margin: 0 0;
 	height: 20px;
 }
 .lines li {
@@ -114,6 +119,10 @@ h1.header {
 	border-bottom: 1px dotted #eaeaea;
 	padding-bottom: 10px;
 }
+.submissions p {
+	width: 400px;
+	float: left;
+}
 .submissions span {
 	float: right;
 	padding: 10px;
@@ -122,6 +131,9 @@ h1.header {
 	text-shadow: 1px 1px 0 #888;
 	box-shadow: 0 0 1px rgba(0,0,0,.5);
 	color: #F25C05;
+}
+#signup_form .submit {
+	margin: 10px 0;
 }
 .votes {
 	float: right;
@@ -141,7 +153,8 @@ h1.header {
 	float: right;
 	margin-left: 20px;
 }
-#vote input {
+#vote input,
+input.submit {
 	background: #F28705;
 	border: 1px solid #F25C05;
 	text-shadow: 1px 1px 0 #888;
@@ -151,10 +164,15 @@ h1.header {
 	border-radius: 5px;
 	padding: 0px 15px;
 }
-#vote input:hover {
+#vote input:hover,
+input.submit:hover {
 	background: #F25C05;
 	border: 1px solid #F28705;
 	cursor: pointer;
+}
+#signup_form {
+	width: 250px;
+	float: left;
 }
 .save,
 .error,
@@ -173,14 +191,14 @@ h1.header {
 	color: #93A605;
 }
 .error {
-	color: red;
+	color: #610207;
 }
 .user_links {
-	width: 600px;
 	margin: 0 auto 50px;
 	text-align: right;
 }
 .user_links a {
+	color: #574534;
 	color: rgba(0,0,0,.4);
 	font-size: 24px;
 	text-shadow: 1px 1px 0 rgba(255,255,255,.2);
@@ -190,4 +208,61 @@ h1.header {
 }
 .user_links a:hover {
 	color: rgba(0,0,0,.6);
+}
+form.new_user input {
+	display: block;
+}
+#sidebar {
+	width: 260px;
+	float: right;
+	color: #574534;
+	color: rgba(0,0,0,.4);
+	text-align: center;
+	text-shadow: 1px 1px 0 rgba(255,255,255,.2);
+	border: 3px double rgba(0,0,0,.2);
+	padding: 10px;
+	border-radius: 10px;
+}
+#sidebar p {
+	font-size: 32px;
+}
+#sidebar a,
+.back {
+	color: #574534;
+	color: rgba(0,0,0,.4);
+	font-size: 24px;
+	text-shadow: 1px 1px 0 rgba(255,255,255,.2);
+	text-decoration: none;
+}
+#sidebar a:hover,
+.back:hover {
+	color: rgba(0,0,0,.6);
+}
+#sidebar h2 {
+	font-size: 30px;
+}
+#content {
+	float: left;
+}
+#story .social_links {
+	overflow: hidden;
+	margin: 10px auto;
+	width: 270px;
+}
+#story .social_links li {
+	float: left;
+}
+#story .twitter {
+	padding-top: 6px;
+}
+
+::selection {
+	background: #eabf81; /* Safari */
+	}
+::-moz-selection {
+	background: #eabf81; /* Firefox */
+}
+h2.thanks {
+	text-align: center;
+	color: #93A605;
 }

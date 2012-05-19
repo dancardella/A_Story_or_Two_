@@ -1,63 +1,85 @@
+<div id="content">
+	<h1 id="story_title"><%= @story.title %></h1>
 
-<h1 id="story_title"><%= @story.title %></h1>
-
-<div id="story">
-	<% if @lines.empty? %>
-		<p class="sorry">Sorry, there aren't any lines to this story yet. Care to add one?</p>
-	<% end %>
-	<ul class="lines">	
-		<% @lines.each do |line| %>
-			<li><%= line.content %></li>
+	<div id="story">
+		<% if @lines.empty? %>
+			<p class="sorry">Sorry, there aren't any lines to this story yet. Care to add one?</p>
 		<% end %>
-	</ul>
+		<ul class="lines">	
+			<% @lines.each do |line| %>
+				<li><%= line.content %></li>
+			<% end %>
+		</ul>
 	
-	<% if @lines.count >= 10 %>
-		<p class="complete">This story is complete! Share it with a friend</p>
-		<p class="complete"><a href="/stories/<%= @last_story_id %>">Check out the latest story here</a>
-		<% Submission.scoped({:conditions => ['story_id = ?', params[:id] ]}).destroy_all %>
+		<% if @lines.count >= 10 %>
+			<p class="complete">This story is complete!</p><p class="complete"> Share it with a friend</p>
+			<ul class="social_links">
+				<li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://astoryortwo.heorkuapp.com/stories/<%= params[:id] %>" data-text="Check out this story from A Story or Two" data-via="astoryortwo_">Tweet</a></li>
+				<li><div class="fb-like" data-href="http://astoryortwo.herokuapp.com/stories/<%= params[:id] %>" data-send="true" data-layout="button_count" data-width="80" data-show-faces="false" data-font="verdana"></div></li>
+			</ul>
+					
+			<p class="complete"><a href="/stories/<%= @last_story_id %>">Check out the latest story here</a></p>
+			<% Submission.scoped({:conditions => ['story_id = ?', params[:id] ]}).destroy_all %>
 		<% else %>
 	
-	<div id="form">
-		<%= form_for @new_submission do |f| %>
-		<%= f.text_field :content %>
-		<%= f.submit "Create Line" %>
+		<div id="form">
+			<%= form_for @new_submission do |f| %>
+			<%= f.text_field :content %>
+			<%= f.submit "Create Line" %>
+			<% end %>
+		</div>
 		<% end %>
-	</div>
-	<% end %>
 	
+		<% if flash[:notice].present? %>
+		  <p class="error"><%= flash[:notice] %></p>
+		<% end %>
 	
-	<% if flash[:save_notice].present? %>
-	  <p class="save"><%= flash[:save_notice] %></p>
-	<% end %>
+		<% if flash[:save_notice].present? %>
+		  <p class="save"><%= flash[:save_notice] %></p>
+		<% end %>
 
-	<% if flash[:alert].present? %>
-	  <p class="error"><%= flash[:alert] %></p>
-	<% end %>
+		<% if flash[:alert].present? %>
+		  <p class="error"><%= flash[:alert] %></p>
+		<% end %>
 
-	<% if @submissions.empty? && @lines.count < 9 %>
+		<% if @submissions.empty? && @lines.count <= 9 %>
 
-	<% elsif @lines.count < 10 %>	
-		<p class="votes">Votes Left: <span><%= @vote_total %></span>
-	<% else %>		
-	<% end %>
-	<ul class="submissions">
-		<% @submissions.each do |submission| %>
-			<li>
-				<%= submission.content %>
-				<span>
-				<%= form_tag "/stories/#{params[:id]}/submission", :method => "put", :id => "vote" do %>
-					<%= hidden_field_tag "vote_count", 1 %>
-					<%= hidden_field_tag "submission_id", submission.id %>
-          	<%= hidden_field_tag "user_id", :user_id %>
-          	
-					<%= submit_tag "Vote" %>
-				<% end %>
-				<%= submission.vote %>
-				</span>	
-			</li>
+		<% elsif @lines.count < 10 %>	
+			<p class="votes">Votes Left: <span><%= votes_left %></span>
+		<% else %>		
 		<% end %>
 		
+		<% if !@submissions.empty? %>
+		<ul class="submissions">
+			<% @submissions.each do |submission| %>
+				<li><p>
+					<%= submission.content %>
+					</p>
+					<span>
+					<%= form_tag "/stories/#{params[:id]}/submission", :method => "put", :id => "vote" do %>
+						<%= hidden_field_tag "vote_count", 1 %>
+						<%= hidden_field_tag "submission_id", submission.id %>
+						<!-- I don't think the line below is doing anything... -->
+	          			<%= hidden_field_tag "user_id", :user_id %>
+						<%= submit_tag "Vote" %>
+					<% end %>
+					<%= submission.vote %>
+					</span>	
+				</li>
+			<% end %>
+		
+		</ul>
+		<% end %>
+	</div><!-- #story -->
+	<div class="bottom_pad"></div>
+	<%= link_to "« Back to all stories", stories_url, :class => "back" %>
+</div><!-- #content -->
+
+<div id="sidebar">
+	<h2>Recent Stories</h2>
+	<ul>
+		<% @stories.each do |story| %>
+		<li><a href="/stories/<%= story.id %>"><%= story.title %></a></li>
+		<% end %>
 	</ul>
-	<%= link_to "Back to all stories", stories_url %>
-</div><!-- #story -->
-<div class="bottom_pad"></div>
+</div><!-- #sidebar -->
